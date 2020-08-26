@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %}jqGrid{% endblock %}
+
+
+{% block script %}
+     <script>
+        $(function () {
+            $("#table").jqGrid({
+                colModel:[
+                    {name: "Name"},
+                    {name: "Address"},
+                    {name: "Contact_No"},
+                    {name: "Relationship_Status"},
+
+
+                ],
+                data:[
+                    {% for data_value in data %}
+                    {id:1, Name: "{{ data_value.name }}", Address: "{{ data_value.address }}", Contact_No: "{{ data_value.cell_number }}", Relationship_Status: "{{ data_value.Relationship }}"},
+                    {% endfor %}
+                ]
+            });
+        });
+    </script>
+
+{% endblock %}
+
+{% block content %}
+
+
+    <table id="table">
+
+    </table>
+
+
+
+
+{#    <table border="1">#}
+{#    <tr>#}
+{#        <th>ID</th>#}
+{#        <th>Name</th>#}
+{#        <th>Address</th>#}
+{#        <th>Contact No.</th>#}
+{#        <th>Relationship Status</th>#}
+{#    </tr>#}
+{#    {% for i in data %}#}
+{#    <tr>#}
+{#        <td>{{ i.id }}</td>#}
+{#        <td>{{ i.name }}</td>#}
+{#        <td>{{ i.address }}</td>#}
+{#        <td>{{ i.cell_number }}</td>#}
+{#        <td>{{ i.Relationship }}</td>#}
+{#    </tr>#}
+{#    {% endfor %}#}
+{#    </table>#}
+
+
+
+
+
+{% endblock %}
